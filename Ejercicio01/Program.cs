@@ -16,7 +16,8 @@ namespace Ejercicio01
             int min = 0;
             int suma = 0;
             float promedio = 0;
-
+            
+            Console.WriteLine("ESTO SE MODIFICO DESDE GITHUB");
             for (int i = 0; i < 5; i++)
             {
                 Console.WriteLine("Ingresa cinco numeros: ");
