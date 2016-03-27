@@ -32,7 +32,10 @@ namespace Ejercicio02
 
             } while (numero <= 0);
 
+            double cuadrado = Math.Pow(numero, 2);//Devuelve el numero a la potencia espesificada ambos tipo de dato double
+            double cubo = Math.Pow(numero, 3);
 
+            Console.WriteLine("El Cuadrado del numero es {0} y el Cubo es {1}", cuadrado, cubo);
 
             Console.ReadKey();
         }
