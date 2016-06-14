@@ -24,24 +24,39 @@ namespace CentralTelefonica
 
         private float CalcularCosto()
         {
-            float costoProvincial = 0;
+            //float costoProvincial = 0;
 
-            switch (_franjaHoraria)
+            //switch (_franjaHoraria)
+            //{
+            //    case Franja.Franja_1:
+            //        costoProvincial = 0.99f * this.Duracion;
+            //        break;
+            //    case Franja.Franja_2:
+            //        costoProvincial = 1.25f * this.Duracion;
+            //        break;
+            //    case Franja.Franja_3:
+            //        costoProvincial = 0.66f * this.Duracion;
+            //        break;
+            //    default:
+            //        break;
+            //}
+
+            //return costoProvincial;
+
+            float retorno = 0;
+            if (this._franjaHoraria == Franja.Franja_1)
             {
-                case Franja.Franja_1:
-                    costoProvincial = 0.99f * this.Duracion;
-                    break;
-                case Franja.Franja_2:
-                    costoProvincial = 1.25f * this.Duracion;
-                    break;
-                case Franja.Franja_3:
-                    costoProvincial = 0.66f * this.Duracion;
-                    break;
-                default:
-                    break;
+                retorno = 0.99f * this.Duracion;
             }
-
-            return costoProvincial;
+            if (this._franjaHoraria == Franja.Franja_2)
+            {
+                retorno = 1.25f * this.Duracion;
+            }
+            if (this._franjaHoraria == Franja.Franja_3)
+            {
+                retorno = 0.66f * this.Duracion;
+            }
+            return retorno;
         }
 
         public void Mostrar()

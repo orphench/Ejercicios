@@ -12,22 +12,32 @@ namespace CentralTelefonica
 
         public float GananciaPorLocal
         {
-            get;
+            get { return CalcularGanancia(TipoLlamada.Local); }
         }
 
         public float GananaciaPorProincial
         {
-            get;
+            get { return CalcularGanancia(TipoLlamada.Provincial); }
         }
 
         public float GananciaTotal
         {
-            get;
+            get { return CalcularGanancia(TipoLlamada.Todas); }
         }
 
         public List<Llamada> Llamadas
         {
-            get;
+            get { return this._listaDeLlamadas; }
+        }
+
+        public Centralita()
+        {
+            this._listaDeLlamadas = new List<Llamada>();
+        }
+
+        public Centralita(string razonSocial):this()
+        {
+            this._razonSocial = razonSocial;
         }
 
         public void Mostrar()
@@ -41,7 +51,7 @@ namespace CentralTelefonica
 
             foreach (Llamada item in _listaDeLlamadas)
             {
-                if (item is Local)
+                if ((item is Local) || (item is Provincial))
                 {
                     item.Mostrar();
                 }
@@ -50,7 +60,39 @@ namespace CentralTelefonica
 
         private float CalcularGanancia(TipoLlamada tipo)
         {
+            float total = 0;
 
+            if (tipo == TipoLlamada.Todas)
+            {
+                for (int i = 0; i < this._listaDeLlamadas.Count; i++)
+                {
+                    if (this._listaDeLlamadas[i] is Local)
+                    {
+                        total += ((Local)this._listaDeLlamadas[i]).CostoLlamada;
+                    }
+                    else
+                    {
+                        total += ((Provincial)this._listaDeLlamadas[i]).CostoLlamada;
+                    }
+                }
+            }
+
+            else
+            {
+                for (int i = 0; i < this._listaDeLlamadas.Count; i++)
+                {
+                    if ((this._listaDeLlamadas[i] is Local) && (tipo == TipoLlamada.Local))
+                    {
+                        total += ((Local)this._listaDeLlamadas[i]).CostoLlamada;
+                    }
+                    if ((this._listaDeLlamadas[i] is Provincial) && (tipo == TipoLlamada.Provincial))
+                    {
+                        total += ((Provincial)this._listaDeLlamadas[i]).CostoLlamada;
+                    }
+                }
+            }
+
+            return total;
         }
     }
 }

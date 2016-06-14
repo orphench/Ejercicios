@@ -36,9 +36,11 @@ namespace CentralTelefonica
         {
             float valorDeLlamada = 0;
 
-            valorDeLlamada = this.Duracion * this.CostoLlamada;
+            valorDeLlamada = this.Duracion * this._costo;
 
             return valorDeLlamada;
         }
+
+        
     }
 }

@@ -25,7 +25,7 @@ namespace CentralTelefonica
         {
             get { return this._nroOrigen; }
         }
-       
+
         public Llamada(string origen, string destino, float duracion)
         {
             this._nroOrigen = origen;
@@ -35,9 +35,13 @@ namespace CentralTelefonica
 
         public static int OrdenarPorDuracion(Llamada uno, Llamada dos)
         {
-
-            return 0;
+            return uno._duracion.CompareTo(dos._duracion);
         }
+
+        public static void Tuvieja()
+        { }
+
+
 
         public void Mostrar()
         {
@@ -47,6 +51,5 @@ namespace CentralTelefonica
             sb.AppendLine("Duracion de Llamada: " + this._duracion);
             Console.WriteLine(sb.ToString());
         }
-
     }
 }
